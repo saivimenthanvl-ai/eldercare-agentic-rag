@@ -1,0 +1,51 @@
+openapi: 3.0.3
+info:
+  title: ElderCare Agentic API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+paths:
+  /session/start:
+    post:
+      operationId: startSession
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                session_id: { type: string }
+      responses:
+        "200":
+          description: OK
+  /chat/step:
+    post:
+      operationId: stepChat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                session_id: { type: string }
+                user_text: { type: string }
+      responses:
+        "200":
+          description: OK
+  /rag/search:
+    post:
+      operationId: ragSearch
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query: { type: string }
+                k: { type: integer, default: 5 }
+      responses:
+        "200":
+          description: OK
